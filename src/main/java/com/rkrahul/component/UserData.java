@@ -1,18 +1,25 @@
-package com.rkrahul;
+package com.rkrahul.component;
 
-public class User {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "user_data")
+public class UserData {
 	
+	@Id
 	private long userId;
 	
 	private String userName;
 	
 	private int salary;
 	
-	public User() {
+	public UserData() {
 		
 	}
 
-	public User(long userId, String userName, int salary) {
+	public UserData(long userId, String userName, int salary) {
 		this.userId = userId;
 		this.userName = userName;
 		this.salary = salary;

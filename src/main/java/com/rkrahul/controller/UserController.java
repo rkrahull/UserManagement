@@ -1,4 +1,4 @@
-package com.rkrahul;
+package com.rkrahul.controller;
 
 import java.util.List;
 
@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rkrahul.component.UserData;
+import com.rkrahul.service.UserService;
+
 @RestController
 public class UserController {
 	
@@ -16,22 +19,22 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping("/users")
-	public List<User> getAllUsers() {
+	public List<UserData> getAllUsers() {
 		return userService.getAllUsers();
 	}
 	
 	@RequestMapping("/users/{id}")
-	public User getUser(@PathVariable long id) {
+	public UserData getUser(@PathVariable long id) {
 		return userService.getUser(id).get();
 	}
 	
 	@RequestMapping(method=RequestMethod.POST,value="users")
-	public String addUser(@RequestBody User user) {
+	public String addUser(@RequestBody UserData user) {
 		return userService.addUser(user);
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT,value="users/{id}")
-	public String updateUser(@PathVariable long id, @RequestBody User user) {
+	public String updateUser(@PathVariable long id, @RequestBody UserData user) {
 		return userService.updateUser(id, user);
 	}
 	
